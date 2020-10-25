@@ -3,13 +3,12 @@
 //Capiturando o tamanho da tela 
 let altura = 0;
 let largura = 0;
+let vidas = 1;
 
 function ajustaTamanhoTela() {
 
     altura = window.innerHeight;
     largura = window.innerWidth;
-    console.log(largura, altura);
-
 }
 
 //gerando posição randomica para o mosquito
@@ -20,6 +19,14 @@ function posicaoRandom() {
     //remover mosquito (caso exista)
     if (document.getElementById('mosquito')) {
         document.getElementById('mosquito').remove();
+
+        if(vidas > 3){
+            window.location.href = 'gameOver.html';
+        }else{
+            let vida = document.querySelector('#v' + vidas);
+            vida.src="midia/img/coracao_vazio.png"
+            vidas++; 
+        }
     }
 
     let posX = Math.floor(Math.random() * largura) - 90;
@@ -27,7 +34,6 @@ function posicaoRandom() {
 
     posX = posX < 0 ? 0 : posX
     posY = posY < 0 ? 0 : posY
-    console.log(posX, posY);
 
     //criar elemento html
     let mosquito = document.createElement('img');
@@ -38,6 +44,11 @@ function posicaoRandom() {
     mosquito.style.position = "absolute";
     mosquito.id = "mosquito"
 
+    //Capiturando evento de click
+    mosquito.onclick= function(){
+        this.remove();
+    }
+
     var body = document.querySelector('body');
     body.appendChild(mosquito);
 }
@@ -45,7 +56,6 @@ function posicaoRandom() {
 //gerando tamanho aleatorio do mosquito
 function tamanhoMosquito() {
     let classe = Math.floor(Math.random() * 3);
-    console.log(classe)
 
     switch (classe) {
         case 0:
