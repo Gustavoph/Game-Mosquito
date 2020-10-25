@@ -4,7 +4,8 @@
 let altura = 0;
 let largura = 0;
 let vidas = 1;
-let tempo = 10;
+let tempo = 50;
+let criaMosquitoTempo = 1500;
 
 function ajustaTamanhoTela() {
 
@@ -101,5 +102,19 @@ function iniciaJogo() {
         alert('Selecione um nível para iniciar o jogo!');
         return false;
     }
-    window.location.href="app.html";
+    window.location.href="app.html?" + nivel;
 }
+
+let nivel_http = window.location.search;
+nivel_http = nivel_http.replace('?', '');
+
+if(nivel_http === 'normal'){
+    //1500
+    criaMosquitoTempo = 1500;
+}else if(nivel_http === 'dificil'){
+    //1000
+    criaMosquitoTempo = 1000;
+}else if(nivel_http === 'chuckNorris'){
+    //750
+    criaMosquitoTempo = 750;
+};
