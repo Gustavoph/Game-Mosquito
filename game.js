@@ -4,6 +4,7 @@
 let altura = 0;
 let largura = 0;
 let vidas = 1;
+let tempo = 10;
 
 function ajustaTamanhoTela() {
 
@@ -13,6 +14,20 @@ function ajustaTamanhoTela() {
 
 //gerando posição randomica para o mosquito
 ajustaTamanhoTela();
+
+let cronometro = setInterval(function(){
+
+    tempo-=1;
+    if(tempo < 0){
+        clearInterval(cronometro);
+        clearInterval(criaMosquito);
+        window.location.href = "winner.html"
+    }else{
+        let add = document.querySelector('#cronometro');
+        add.innerHTML = tempo;
+    }
+    
+}, 1000);
 
 function posicaoRandom() {
 
@@ -80,4 +95,3 @@ function ladoAleatorio() {
 }
 
 
-// 
