@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,27 @@
     <link rel="stylesheet" href="/midia/css/style.css">
     <title>Game - Mata Mosquito</title>
 </head>
+
 <body onresize="ajustaTamanhoTela()">
+
+    <div class="painel">
+        <div class="vidas">
+            <img src="midia/img/coracao_vazio.png">
+            <img src="midia/img/coracao_cheio.png">
+            <img src="midia/img/coracao_cheio.png">
+        </div>
+        <div class="cronometro">
+            Tempo Restante : ?
+        </div>
+    </div>
+
     <script>
         posicaoRandom();
+
+        setInterval(function () {
+            posicaoRandom()
+        }, 1000)
     </script>
 </body>
+
 </html>
